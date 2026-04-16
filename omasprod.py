@@ -319,6 +319,7 @@
 #     else:
 #         print (f"you got it! the answer was {actual_answer}")
 #
+#Testing
 #
 # def set_difficult():
 #     level = input ("choose a difficulty. type easy or hard: ")
