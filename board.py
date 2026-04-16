@@ -31,3 +31,5 @@ class Scoreboard(Turtle):
         self.write(f" Score {self.score}", align= ALIGNMENT, font= FONT)
 
 
+#-----------day 21-------------------------
+#-----------day 22-------------------------
