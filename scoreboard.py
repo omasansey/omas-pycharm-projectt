@@ -49,27 +49,55 @@
 #----------day 19---------------------------
 #-----------day 20-------------------------
 #-----------day 21-------------------------
-from turtle import Turtle
-import random
-
-
-class Food(Turtle):
-
-    def __init__(self):
-        super().__init__()
-        self.shape("circle")
-        self.penup()
-        self.shapesize(stretch_len = 0.5, stretch_wid = 0.5)
-        self.color("blue")
-        self.speed("fastest")
-        self.refresh()
-
-    def refresh(self):
-        random_x = random.randint(-280, 280)
-        random_y = random.randint(-280, 280)
-        self.goto(random_x, random_y)
+# from turtle import Turtle
+# import random
+#
+#
+# class Food(Turtle):
+#
+#     def __init__(self):
+#         super().__init__()
+#         self.shape("circle")
+#         self.penup()
+#         self.shapesize(stretch_len = 0.5, stretch_wid = 0.5)
+#         self.color("blue")
+#         self.speed("fastest")
+#         self.refresh()
+#
+#     def refresh(self):
+#         random_x = random.randint(-280, 280)
+#         random_y = random.randint(-280, 280)
+#         self.goto(random_x, random_y)
 
 
 
 #-----------day 21-------------------------
 #-----------day 22-------------------------
+
+from turtle import Turtle
+
+class Scoreboard(Turtle):
+
+    def __init__(self):
+        super().__init__()
+        self.color("white")
+        self.penup()
+        self.hideturtle()
+        self.l_score = 0
+        self.r_score = 0
+        self.update_scoreboard()
+
+    def update_scoreboard(self):
+        self.clear()
+        self.goto(-100, 200)
+        self.write(self.l_score, align = "center", font = ("courier", 80, "normal"))
+        self.goto(100, 200)
+        self.write(self.r_score, align="center", font=("courier", 80, "normal"))
+
+    def l_point(self):
+        self.l_score += 1
+        self.update_scoreboard()
+
+    def r_point(self):
+        self.r_score += 1
+        self.update_scoreboard()
