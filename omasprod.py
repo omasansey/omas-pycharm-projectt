@@ -1250,7 +1250,7 @@ while game_is_on:
         ball.reset_position()
         scoreboard.r_point()
 
-aaaaa
+
 
 
 
