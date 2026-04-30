@@ -74,30 +74,98 @@
 #-----------day 21-------------------------
 #-----------day 22-------------------------
 
+# from turtle import Turtle
+#
+# class Scoreboard(Turtle):
+#
+#     def __init__(self):
+#         super().__init__()
+#         self.color("white")
+#         self.penup()
+#         self.hideturtle()
+#         self.l_score = 0
+#         self.r_score = 0
+#         self.update_scoreboard()
+#
+#     def update_scoreboard(self):
+#         self.clear()
+#         self.goto(-100, 200)
+#         self.write(self.l_score, align = "center", font = ("courier", 80, "normal"))
+#         self.goto(100, 200)
+#         self.write(self.r_score, align="center", font=("courier", 80, "normal"))
+#
+#     def l_point(self):
+#         self.l_score += 1
+#         self.update_scoreboard()
+#
+#     def r_point(self):
+#         self.r_score += 1
+#         self.update_scoreboard()
+
+
+#-----------day 22-------------------------------------
+#-----------day 23-------turtle-crossing---------------
+
+# from turtle import Turtle
+#
+# FONT = ("Courier", 24, "normal")
+#
+# class Scoreboard(Turtle):
+#
+#     def __init__(self):
+#         super().__init__()
+#         self.level = 1
+#         self.hideturtle()
+#         self.penup()
+#         self.goto(-280, 250)
+#         self.update_scoreboard()
+#
+#
+#     def update_scoreboard(self):
+#         self.clear()
+#         self.write(f"level: {self.level}", align="left", font=FONT)
+#
+#     def increase_level(self):
+#         self.level += 1
+#         self.update_scoreboard()
+#
+#     def game_over(self):
+#         self.goto(0,0)
+#         self.write(f"GAME OVER", align="center", font=FONT)
+
+
+#-----------day 23----------------------------------------------------------
+#-----------day 24-------file system + snake game highscore-----------------
+
+
+"""below will be on a tab called board"""
 from turtle import Turtle
+ALIGNMENT = "center"
+FONT = ("Courier", 24, "normal")
+
 
 class Scoreboard(Turtle):
 
     def __init__(self):
         super().__init__()
+        self.score = 0
+        self.high_score = 0
         self.color("white")
         self.penup()
+        self.goto(0, 270)
         self.hideturtle()
-        self.l_score = 0
-        self.r_score = 0
         self.update_scoreboard()
 
     def update_scoreboard(self):
         self.clear()
-        self.goto(-100, 200)
-        self.write(self.l_score, align = "center", font = ("courier", 80, "normal"))
-        self.goto(100, 200)
-        self.write(self.r_score, align="center", font=("courier", 80, "normal"))
+        self.write(f" Score {self.score} High score {self.high_score}", align= ALIGNMENT, font = FONT)
 
-    def l_point(self):
-        self.l_score += 1
+    def reset(self):
+        if self.score > self.high_score:
+            self.high_score = self.score
+        self.score = 0
         self.update_scoreboard()
 
-    def r_point(self):
-        self.r_score += 1
+    def increase_score(self):
+        self.score += 1
         self.update_scoreboard()

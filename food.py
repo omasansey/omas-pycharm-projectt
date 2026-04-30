@@ -628,32 +628,90 @@
 #-----------day 21-------------------------
 #-----------day 22-------------------------
 
-from turtle import Turtle
+# from turtle import Turtle
+#
+# class Ball(Turtle):
+#
+#     def __init__(self):
+#         super().__init__()
+#         self.color("white")
+#         self.shape("circle")
+#         self.penup()
+#         self.x_move = 10
+#         self.y_move = 10
+#         self.move_speed = 0.1
+#
+#     def move(self):
+#         new_x = self.xcor() + self.x_move
+#         new_y = self.ycor() + self.y_move
+#         self.goto(new_x, new_y)
+#
+#     def bounce_y(self):
+#         self.y_move *= -1
+#
+#     def bounce_x(self):
+#         self.x_move *= -1
+#         self.move_speed *= 0.9
+#
+#     def reset_position(self):
+#         self.goto(0,0)
+#         self.move_speed = 0.1
+#         self.bounce_x()
 
-class Ball(Turtle):
+#-----------day 22----------------------------------------
+#-----------day 23----------turtle-crossing---------------
+
+# from turtle import Turtle
+#
+# STARTING_POSITION = (0,-275)
+# MOVE_DISTANCE = 10
+# FINISH_LINE_Y = 280
+#
+# class Player(Turtle):
+#
+#     def __init__(self):
+#         super().__init__()
+#         self.shape("turtle")
+#         self.penup()
+#         self.go_to_start()
+#         self.setheading(90)
+#
+#     def go_up(self):
+#         self.forward(MOVE_DISTANCE)
+#
+#     def go_to_start(self):
+#         self.goto(STARTING_POSITION)
+#
+#     def is_at_finish_line(self):
+#         if self.ycor() > FINISH_LINE_Y:
+#             return True
+#         else:
+#             return False
+
+
+#-----------day 23----------------------------------------------------------
+#-----------day 24-------file system + snake game highscore-----------------
+
+
+"""below will be on a tab called food"""
+from turtle import Turtle
+import random
+
+
+class Food(Turtle):
 
     def __init__(self):
         super().__init__()
-        self.color("white")
         self.shape("circle")
         self.penup()
-        self.x_move = 10
-        self.y_move = 10
-        self.move_speed = 0.1
+        self.shapesize(stretch_len = 0.5, stretch_wid = 0.5)
+        self.color("blue")
+        self.speed("fastest")
+        self.refresh()
 
-    def move(self):
-        new_x = self.xcor() + self.x_move
-        new_y = self.ycor() + self.y_move
-        self.goto(new_x, new_y)
+    def refresh(self):
+        random_x = random.randint(-280, 280)
+        random_y = random.randint(-280, 280)
+        self.goto(random_x, random_y)
 
-    def bounce_y(self):
-        self.y_move *= -1
 
-    def bounce_x(self):
-        self.x_move *= -1
-        self.move_speed *= 0.9
-
-    def reset_position(self):
-        self.goto(0,0)
-        self.move_speed = 0.1
-        self.bounce_x()

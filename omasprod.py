@@ -1029,8 +1029,8 @@
 # screen.exitonclick()
 
 #----------day 19---------------------------
-#-----------day 20-------------------------
-#-----------day 21-------------------------
+#-----------day 20-------snake game------------------
+#-----------day 21-------snake game-----------------
 
 # """below will be on a tab called food"""
 # from turtle import Turtle
@@ -1197,61 +1197,343 @@
 
 
 #-----------day 21-------------------------
-#-----------day 22-------------------------
+#-----------day 22------------pong-------------
+# """below will be on the file called paddle"""
+# from  turtle import Turtle
+#
+# class Paddle(Turtle):
+#
+#     def __init__(self, position):
+#         super().__init__()
+#         self.shape("square")
+#         self.color("white")
+#         self.shapesize(stretch_wid=5, stretch_len=1)
+#         self.penup()
+#         self.goto(position)
+#
+#     def go_up(self):
+#         new_y = self.ycor() + 20
+#         self.goto(self.xcor(), new_y)
+#
+#     def go_down(self):
+#         new_y = self.ycor() - 20
+#         self.goto(self.xcor(), new_y)
+#
+#
+# """below will be on the file called ball"""
+# from turtle import Turtle
+#
+# class Ball(Turtle):
+#
+#     def __init__(self):
+#         super().__init__()
+#         self.color("white")
+#         self.shape("circle")
+#         self.penup()
+#         self.x_move = 10
+#         self.y_move = 10
+#         self.move_speed = 0.1
+#
+#     def move(self):
+#         new_x = self.xcor() + self.x_move
+#         new_y = self.ycor() + self.y_move
+#         self.goto(new_x, new_y)
+#
+#     def bounce_y(self):
+#         self.y_move *= -1
+#
+#     def bounce_x(self):
+#         self.x_move *= -1
+#         self.move_speed *= 0.9
+#
+#     def reset_position(self):
+#         self.goto(0,0)
+#         self.move_speed = 0.1
+#         self.bounce_x()
+#
+#
+#
+# """below will be on the file called scoreboard"""
+# from turtle import Turtle
+#
+# class Scoreboard(Turtle):
+#
+#     def __init__(self):
+#         super().__init__()
+#         self.color("white")
+#         self.penup()
+#         self.hideturtle()
+#         self.l_score = 0
+#         self.r_score = 0
+#         self.update_scoreboard()
+#
+#     def update_scoreboard(self):
+#         self.clear()
+#         self.goto(-100, 200)
+#         self.write(self.l_score, align = "center", font = ("courier", 80, "normal"))
+#         self.goto(100, 200)
+#         self.write(self.r_score, align="center", font=("courier", 80, "normal"))
+#
+#     def l_point(self):
+#         self.l_score += 1
+#         self.update_scoreboard()
+#
+#     def r_point(self):
+#         self.r_score += 1
+#         self.update_scoreboard()
+#
+#
+#
+#
+# """below will stay on the main file called omasprod"""
+# from  turtle import Turtle, Screen
+# from paddle import Paddle
+# from ball import Ball
+# from scoreboard import Scoreboard
+# import time
+#
+# screen = Screen()
+# screen.bgcolor("black")
+# screen.setup(width = 800, height = 600)
+# screen.title("Pong")
+# screen.tracer(0)
+#
+# r_paddle = Paddle((350, 0))
+# l_paddle = Paddle((-350, 0))
+# ball = Ball()
+# scoreboard = Scoreboard()
+#
+#
+#
+# screen.listen()
+# screen.onkey(r_paddle.go_up, "Up")
+# screen.onkey (r_paddle.go_down, "Down")
+# screen.onkey(l_paddle.go_up, "w")
+# screen.onkey (l_paddle.go_down, "s")
+#
+#
+#
+# game_is_on = True
+# while game_is_on:
+#     time.sleep(ball.move_speed)
+#     screen.update()
+#     ball.move()
+#
+#     #detect collision with wall
+#     if ball.ycor() > 280 or ball.ycor() < -280:
+#         ball.bounce_y()
+#
+#     #detect collision with paddle
+#     if ball.distance(r_paddle) < 50 and ball.xcor() > 320 or ball.distance(l_paddle) < 50 and ball.xcor() < 320:
+#         ball.bounce_x()
+#
+#     #detect r paddle misses
+#     if ball.xcor() > 380:
+#         ball.reset_position()
+#         scoreboard.l_point()
+#
+#     # detect l paddle misses
+#     if ball.xcor() < -380:
+#         ball.reset_position()
+#         scoreboard.r_point()
+#
+# screen.exitonclick()
 
-from  turtle import Turtle, Screen
-from paddle import Paddle
-from ball import Ball
-from scoreboard import Scoreboard
+
+#-----------day 22---------------------------------------
+#-----------day 23-------turtle-crossing-----------------
+
+# """below will be on the file called scoreboard"""
+# from turtle import Turtle
+#
+# FONT = ("Courier", 24, "normal")
+#
+# class Scoreboard(Turtle):
+#
+#     def __init__(self):
+#         super().__init__()
+#         self.level = 1
+#         self.hideturtle()
+#         self.penup()
+#         self.goto(-280, 250)
+#         self.update_scoreboard()
+#
+#
+#     def update_scoreboard(self):
+#         self.clear()
+#         self.write(f"level: {self.level}", align="left", font=FONT)
+#
+#     def increase_level(self):
+#         self.level += 1
+#         self.update_scoreboard()
+#
+#     def game_over(self):
+#         self.goto(0,0)
+#         self.write(f"GAME OVER", align="center", font=FONT)
+
+
+# """below will be on the file called car_manager"""
+# from turtle import Turtle
+# import random
+#
+# COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
+# STARTING_MOVE_DISTANCE = 5
+# MOVE_INCREMENT = 10
+#
+# class CarManager:
+#
+#     def __init__(self):
+#         self.all_cars = []
+#         self.car_speed = STARTING_MOVE_DISTANCE
+#
+#     def create_car(self):
+#         random_chance = random.randint(1, 6)
+#         if random_chance == 1:
+#             new_car = Turtle("square")
+#             new_car.shapesize(stretch_wid=1, stretch_len=2)
+#             new_car.penup()
+#             new_car.color(random.choice(COLORS))
+#             random_y = random.randint(-250, 250)
+#             new_car.goto(340, random_y)
+#             self.all_cars.append(new_car)
+#
+#     def move_cars(self):
+#         for car in self.all_cars:
+#             car.backward(self.car_speed)
+#
+#     def level_up(self):
+#         self.car_speed += MOVE_INCREMENT
+
+
+
+# """below will be on the file called player"""
+# from turtle import Turtle
+#
+# STARTING_POSITION = (0,-275)
+# MOVE_DISTANCE = 10
+# FINISH_LINE_Y = 280
+#
+# class Player(Turtle):
+#
+#     def __init__(self):
+#         super().__init__()
+#         self.shape("turtle")
+#         self.penup()
+#         self.go_to_start()
+#         self.setheading(90)
+#
+#     def go_up(self):
+#         self.forward(MOVE_DISTANCE)
+#
+#     def go_to_start(self):
+#         self.goto(STARTING_POSITION)
+#
+#     def is_at_finish_line(self):
+#         if self.ycor() > FINISH_LINE_Y:
+#             return True
+#         else:
+#             return False
+
+
+# """below will stay on the main file called omasprod"""
+# import time
+# from turtle import Screen
+# from player import Player
+# from car_manager import CarManager
+# from scoreboard import Scoreboard
+#
+# screen = Screen()
+# screen.setup(width = 700, height=580)
+# screen.tracer(0)
+#
+# player = Player()
+# car_manager = CarManager()
+# scoreboard = Scoreboard()
+#
+#
+# screen.listen()
+# screen.onkey(player.go_up, "Up")
+#
+#
+# game_is_on = True
+# while game_is_on:
+#
+#     time.sleep(0.1)
+#     screen.update()
+#
+#     car_manager.create_car()
+#     car_manager.move_cars()
+#
+#     #detect collision with car
+#     for car in car_manager.all_cars:
+#         if car.distance(player) < 20:
+#             game_is_on = False
+#             scoreboard.game_over()
+#
+#     #detect successful crossing
+#     if player.is_at_finish_line():
+#         player.go_to_start()
+#         car_manager.level_up()
+#         scoreboard.increase_level()
+#
+# screen.exitonclick()
+
+
+#-----------day 23----------------------------------------------------------
+#-----------day 24-------file system + snake game highscore-----------------
+
+
+
+"""below stays at the main prod"""
+import turtle
+from turtle import Turtle, Screen
+from snake import Snake
+from food import Food
+from board import Scoreboard
+
 import time
 
-screen = Screen()
-screen.bgcolor("black")
-screen.setup(width = 800, height = 600)
-screen.title("Pong")
-screen.tracer(0)
 
-r_paddle = Paddle((350, 0))
-l_paddle = Paddle((-350, 0))
-ball = Ball()
+screen = Screen()
+screen.setup(width = 600, height = 600)
+screen.bgcolor("black")
+screen.title("My Snake Game")
+screen.tracer (0)
+
+snake = Snake()
+food = Food()
 scoreboard = Scoreboard()
 
-
-
 screen.listen()
-screen.onkey(r_paddle.go_up, "Up")
-screen.onkey (r_paddle.go_down, "Down")
-screen.onkey(l_paddle.go_up, "w")
-screen.onkey (l_paddle.go_down, "s")
-
-
+screen.onkey(snake.up, "Up")
+screen.onkey(snake.down, "Down")
+screen.onkey(snake.left, "Left")
+screen.onkey(snake.right, "Right")
 
 game_is_on = True
 while game_is_on:
-    time.sleep(ball.move_speed)
     screen.update()
-    ball.move()
+    time.sleep(0.1)
+    snake.move()
+
+    #detect collision with food
+    if snake.head.distance(food) < 15:
+        food.refresh()
+        snake.extend()
+        scoreboard.increase_score()
 
     #detect collision with wall
-    if ball.ycor() > 280 or ball.ycor() < -280:
-        ball.bounce_y()
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
+        scoreboard.reset()
+        snake.reset()
 
-    #detect collision with r paddle
-    if ball.distance(r_paddle) < 50 and ball.xcor() > 320 or ball.distance(l_paddle) < 50 and ball.xcor() < 320:
-        ball.bounce_x()
-
-    #detect r paddle misses
-    if ball.xcor() > 380:
-        ball.reset_position()
-        scoreboard.l_point()
-
-    # detect l paddle misses
-    if ball.xcor() < -380:
-        ball.reset_position()
-        scoreboard.r_point()
-
-
-
+    #detect collision with body
+    for segment in snake.segments:
+        if segment == snake.head:
+            pass
+        elif snake.head.distance(segment) < 10:
+            scoreboard.reset()
+            snake.reset()
 
 
 screen.exitonclick()
