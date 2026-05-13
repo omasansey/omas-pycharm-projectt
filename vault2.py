@@ -2,7 +2,7 @@
 #-----------day 24-------file system + snake game highscore-----------------
 
 
-"""below will be on a tab called board"""
+"""below will be on a tab called vault2"""
 from turtle import Turtle
 ALIGNMENT = "center"
 FONT = ("Courier", 24, "normal")
@@ -37,3 +37,6 @@ class Scoreboard(Turtle):
         self.score += 1
         self.update_scoreboard()
 
+
+#-----------day 23----------------------------------------------------------
+#-----------day 24-------file system + snake game highscore-----------------

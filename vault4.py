@@ -1,4 +1,4 @@
-"""below will be on a tab called snake"""
+"""below will be on a tab called vault4"""
 from turtle import Turtle
 
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
@@ -60,3 +60,7 @@ class Snake:
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+
+
+#-----------day 23----------------------------------------------------------
+#-----------day 24-------file system + snake game highscore-----------------

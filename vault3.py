@@ -1,4 +1,4 @@
-"""below will be on a tab called food"""
+"""below will be on a tab called vault3"""
 from turtle import Turtle
 import random
 
@@ -18,3 +18,7 @@ class Food(Turtle):
         random_x = random.randint(-280, 280)
         random_y = random.randint(-280, 280)
         self.goto(random_x, random_y)
+
+
+#-----------day 23----------------------------------------------------------
+#-----------day 24-------file system + snake game highscore-----------------
