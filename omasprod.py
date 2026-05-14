@@ -1667,17 +1667,39 @@
 
 #-----------day 24-------file system + snake game highscore-----------------
 
+# PLACEHOLDER = "[name]"
+#
+# with open ("./k2path/invited_names.txt") as names_file:
+#     names = names_file.readlines()
+#
+# with open ("./k2path/starting_letter.txt") as letter_file:
+#     letter_contents = letter_file.read()
+#     for name in names:
+#         stripped_name = name.strip()
+#         new_letter = letter_contents.replace(PLACEHOLDER, stripped_name)
+#         with open(f"./k2path/k3path/letter_for_{stripped_name}.txt", mode="w") as completed_letter:
+#             completed_letter.write(new_letter)
+
+#-----------day 24-------file system + snake game highscore-----------------
+
+
+from docx import Document
+
 PLACEHOLDER = "[name]"
 
-with open ("./k2path/invited_names.txt") as names_file:
+with open("scoreboard.py") as names_file:
     names = names_file.readlines()
 
-with open ("./k2path/starting_letter.txt") as letter_file:
+with open("player.py") as letter_file:
     letter_contents = letter_file.read()
-    for name in names:
-        stripped_name = name.strip()
-        new_letter = letter_contents.replace(PLACEHOLDER, stripped_name)
-        with open(f"./k2path/k3path/letter_for_{stripped_name}.txt", mode="w") as completed_letter:
-            completed_letter.write(new_letter)
 
+for name in names:
+    stripped_name = name.strip()
 
+    new_letter = letter_contents.replace(PLACEHOLDER, stripped_name)
+
+    completed_letter = Document()
+
+    completed_letter.add_paragraph(new_letter)
+
+    completed_letter.save(f"/Users/hp/OneDrive/Desktop/pytest/letter_for_{stripped_name}.docx")
